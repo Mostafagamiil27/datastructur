@@ -1,0 +1,76 @@
+#include <iostream>
+using namespace std;
+int const cap = 100;
+
+class Stack {
+    int top;
+    int arr[cap];
+public:
+    Stack() {
+        top = -1;
+    }
+    bool isEmpty() {
+        if (top == -1) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    bool isFull() {
+        if (top == cap - 1) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    void push(int val) {
+        if (isFull()) {
+            cout << "stack is full";
+        }
+        else {
+            top++;
+            arr[top] = val;
+        }
+
+    }
+    void pop() {
+        if (isEmpty()) {
+            cout << "stack is Empty";
+        }
+        else {
+            top--;
+        }
+    }
+    void show() {
+        while (!isEmpty()) {
+            cout << arr[top] << endl;
+            pop();
+        }
+    }
+    int findmin() {
+        if (isEmpty()){
+            cout << "Stack is zero";
+        }
+        else {
+            int M = arr[top];
+            for (int G = 0; G < top; G++) {
+                if (M>arr[G]) {
+                    M = arr[G];
+                }
+            }
+            return M;
+        }
+        
+    }
+};
+
+int main(){
+    Stack s[3];
+    s[0].push(4);
+    s[0].push(27);
+    s[0].push(11);
+    cout<<s[0].findmin()<<endl;
+    s[0].show();
+}
